@@ -36,22 +36,36 @@ def centimeterConversion(inputNumber,unit_convert):
 app=Flask(__name__)
 
 @app.route('/',methods=["POST","GET"])
-def index():
+def Length():
     if request.method=="POST":
         inputNumber=float(request.form.get("number"))
         unit_input=request.form.get("unit of number")
         unit_convert=request.form.get("unit to convert into")
         converted_Number=lengthConversionGuide(inputNumber,unit_input,unit_convert)
         print( converted_Number)
-        return redirect(url_for("result", value=converted_Number, unit=unit_convert))
+        return redirect(url_for("convertedLength", value=converted_Number, unit=unit_convert))
+    return render_template("length.html")
 
+@app.route('/weight')
+def weight():
+    return render_template("weight.html")
 
-    return render_template("index.html")
-@app.route('/result')
-def result():
+@app.route('/temperature')
+def temperature():
+    return render_template("temperature.html")
+
+@app.route('/converted-weight')
+def convertedWeight():
+    pass
+@app.route('/converted-temperature')
+def convertedTemperature():
+    pass
+@app.route('/converted-Length')
+def convertedLength():
     value= request.args.get("value")
     unit=request.args.get("unit")
-    return render_template("converted length.html",value=value,unit=unit)
+    return render_template("converted value.html",value=value,unit=unit)
+
 
 if __name__ =="__main__":
     app.run(debug=True)
