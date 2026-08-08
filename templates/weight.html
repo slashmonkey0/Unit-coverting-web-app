@@ -1,0 +1,25 @@
+{% extends "base.html"%}
+{% block head %}
+
+{% endblock %}
+
+{% block body %} 
+<form method ="POST">
+   <label> Unit of Quantity :</label>
+   <input list="units" id="unit of number" name="unit of number">
+    <datalist id="units">
+        <option value="g">
+        <option value="mg">
+        <option value="kg">
+    </datalist>
+    <br>
+    <label> Unit to convert into :</label>
+   <input list="units" id="unit to convert into" name="unit to convert into">
+
+    <br>
+    <label> Quantity :</label>
+    <input type="number" name ="number" id="number">
+    <br>
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
